@@ -65,7 +65,7 @@
                       <td>{{$m->alamat}}</td>
                       <td> <img src="dist/img/{{$m->foto}}?>" width="100px" height="100px" /> </td>
                       <td><a href="" class="btn btn-primary" >Edit</a>
-                        <a href="" class="btn btn-danger" >Hapus</a></td>
+
                     </tr>
 @endforeach
                   </tbody>
