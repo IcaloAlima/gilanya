@@ -29,7 +29,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Program Studi</h3>
+                <h3 class="card-title">data Program Studi</h3>
   
                <div class="card-tools">
                 <a href="/prodi/create" class="btn btn-primary">Tambah</a>
