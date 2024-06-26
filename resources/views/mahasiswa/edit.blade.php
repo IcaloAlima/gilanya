@@ -31,75 +31,46 @@
                     <!-- jquery validation -->
                     <div class="card card-warning">
                         <div class="card-header">
-                            <h3 class="card-title">Tambah Mahasiswa</h3>
+                            <h3 class="card-title">Edit Mahasiswa</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{url('mahasiswa')}}" method="post" enctype="multipart/form-data">
+                        <form action="{{url("mahasiswa/$mahasiswa->nim")}}" method="post" enctype="multipart/form-data">
+                            @method('put')
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="nim">NIM</label>
-                                    <input type="text" name="nim" class="form-control @error ('nim') is-invalid @enderror " id="nim" placeholder="Masukkan NIM" value="{{ old ('nim')}}">
-                                    @error('nim')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <input type="text" name="nim" class="form-control" id="nim" placeholder="Masukkan NIM" value="{{ $mahasiswa->nim }}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama">Nama</label>
-                                    <input type="text" name="nama" class="form-control @error ('nama') is-invalid @enderror" id="nama" placeholder="Masukkan Nama" value="{{ old ('nama')}}">
-                                    @error('nama')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <input type="text" name="nama" class="form-control id="nama" placeholder="Masukkan Nama" value="{{ $mahasiswa->nama }}" >
                                 </div>
                                 <div class="form-group">
                                     <label for="prodi">Program Studi</label>
-                                    <select class="form-control select2bs4 @error ('prodi_id') is-invalid @enderror" style="width: 100%;" id="prodi" name="prodi_id">
+                                    <select class="form-control select2bs4" style="width: 100%;" id="prodi" name="prodi_id">
                                         <option value="">Pilih Prodi</option>
                                         @foreach ($prodi as $d)
-                                        <option value="{{ $d['id'] }}"{{$d->id == old('prodi_id') ? 'SELECTED' : '' }}>{{$d['nama_prodi']}}</option>
-                                        @endforeach
+                                        <option value="{{ $d['id'] }}" {{$d['id'] == $mahasiswa->prodi_id ? 'SELECTED' : ''}}>{{$d['nama_prodi']}}</option>
+                                        @endforeach`
                                     </select>
-                                    @error('prodi_id')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="nohp">Nomor HP</label>
-                                    <input type="text" name="no_hp" class="form-control @error('no_hp') is-invalid @enderror" id="nohp" placeholder="Masukkan Nomor HP" value="{{ old ('no_hp')}}">
-                                    @error('no_hp')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <input type="text" name="no_hp" class="form-control" id="nohp" placeholder="Masukkan Nomor HP" value="{{ $mahasiswa->no_hp }}" >
                                 </div>
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
-                                    <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" placeholder="Masukkan Alamat" value="{{ old ('alamat')}}">
-                                    @error('alamat')
-                                    <div class="invalid-feedback">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
-                                </div >
+                                    <input type="text" name="alamat" class="form-control" id="alamat" placeholder="Masukkan Alamat" value="{{ $mahasiswa->alamat }}" >
+                                </div>
                                 <div class="form-group">
                                     <label for="foto">Foto</label>
                                     <div class="input-group">
-                                        <div class="custom-file @error ('foto') is-invalid @enderror">
+                                        <div class="custom-file">
                                             <input type="file" name="foto" id="foto">
                                         </div>
                                     </div>
-                                    @error('foto')
-                                    <div class="invalid-feedback d-block">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
                                 </div>
                             </div>
                             <!-- /.card-body -->
